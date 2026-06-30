@@ -1,0 +1,50 @@
+name: Selenium TestNG Automation CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write      # Required for native loop-free hosting
+  id-token: write   # Secure token required for deployment
+
+jobs:
+  test:
+    name: Run Selenium Automation Tests
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    # Crucial step for Selenium: Installs Google Chrome on the runner environment
+    - name: Setup Google Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
+
+    - name: Run Automation Tests
+      run: mvn clean test
+
+    - name: Upload Pages Artifact
+      if: always()
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./reports # Ensure this matches your Extent Report generation directory
+
+    - name: Deploy Live Report
+      if: always()
+      id: deployment
+      uses: actions/deploy-pages@v4
