@@ -1,0 +1,10 @@
+12:28:07.299 INFO  TestClasses.LoginpageTest -Launched the Url for test scenario1
+12:28:08.188 INFO  TestClasses.LoginpageTest -User name is added
+12:28:08.281 INFO  TestClasses.LoginpageTest -Password is added
+12:28:09.821 INFO  TestClasses.LoginpageTest -clicked on login button
+12:28:10.277 INFO  TestClasses.LoginpageTest -Logged in successfully
+12:39:59.666 INFO  TestClasses.LoginpageTest -Launched the Url for test scenario1
+12:40:00.552 INFO  TestClasses.LoginpageTest -Username field is available in the login screen
+12:40:00.812 INFO  TestClasses.LoginpageTest -User name is added
+12:40:00.924 INFO  TestClasses.LoginpageTest -Password is added
+12:40:01.044 INFO  TestClasses.LoginpageTest -clicked on login button
