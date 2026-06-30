@@ -42,7 +42,7 @@ jobs:
       if: always()
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./reports # Ensure this matches your Extent Report generation directory
+        path: ./test-output
 
     - name: Deploy Live Report
       if: always()
